@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>Logo.png</file>
+        <file>up-arrow.png</file>
+        <file>down-arrow.png</file>
+        <file>plus.png</file>
+        <file>minus.png</file>
+        <file>apps_printer_15747.png</file>
+        <file>checklist_icon_129185.png</file>
+        <file>Base.png</file>
+        <file>Case.png</file>
+        <file>Import.png</file>
+        <file>New.png</file>
+        <file>Open.png</file>
+        <file>Save.png</file>
+        <file>Save_as.png</file>
+    </qresource>
+</RCC>
