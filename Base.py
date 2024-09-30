@@ -78,19 +78,19 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.change_elements.prefix_ldt.setVisible(False)
         self.change_elements.prefix_chb.setVisible(False)
         self.projects = Projects()
-        self.resistors_data = []
-        self.capacitors_data = []
-        self.diodes_data = []
-        self.transistors_data = []
-        self.microschemes_data = []
-        self.drossels_data = []
-        self.connectors_data = []
-        self.other_data = []
-        self.projects_data = []
-        self.cases_data = []
-        self.mount_data = []
-        self.statistic_data = []
-        self.report_data = []
+        # self.resistors_data = []
+        # self.capacitors_data = []
+        # self.diodes_data = []
+        # self.transistors_data = []
+        # self.microschemes_data = []
+        # self.drossels_data = []
+        # self.connectors_data = []
+        # self.other_data = []
+        # self.projects_data = []
+        # self.cases_data = []
+        # self.mount_data = []
+        # self.statistic_data = []
+        # self.report_data = []
 
         self.setup_fields()
         self.setup_tables()
@@ -174,45 +174,46 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.path = self.configdata[10]
         if self.path != '':
             self.setup_base(self.path)
+        # self.recount('test_components')
 
     def setup_tables(self):
-        self.resistors_in_model = TableModel(headers['Резисторы'], self.resistors_data)
+        self.resistors_in_model = TableModel(headers['Резисторы'])
         self.resistors_model = QSortFilterProxyModel()
         self.resistors_model.setSourceModel(self.resistors_in_model)
-        self.capacitors_in_model = TableModel(headers['Конденсаторы'], self.capacitors_data)
+        self.capacitors_in_model = TableModel(headers['Конденсаторы'])
         self.capacitors_model = QSortFilterProxyModel()
         self.capacitors_model.setSourceModel(self.capacitors_in_model)
-        self.diodes_in_model = TableModel(headers['Диоды'], self.diodes_data)
+        self.diodes_in_model = TableModel(headers['Диоды'])
         self.diodes_model = QSortFilterProxyModel()
         self.diodes_model.setSourceModel(self.diodes_in_model)
-        self.transistors_in_model = TableModel(headers['Транзисторы'], self.transistors_data)
+        self.transistors_in_model = TableModel(headers['Транзисторы'])
         self.transistors_model = QSortFilterProxyModel()
         self.transistors_model.setSourceModel(self.transistors_in_model)
-        self.microschemes_in_model = TableModel(headers['Микросхемы'], self.microschemes_data)
+        self.microschemes_in_model = TableModel(headers['Микросхемы'])
         self.microschemes_model = QSortFilterProxyModel()
         self.microschemes_model.setSourceModel(self.microschemes_in_model)
-        self.drossels_in_model = TableModel(headers['Дроссели'], self.drossels_data)
+        self.drossels_in_model = TableModel(headers['Дроссели'])
         self.drossels_model = QSortFilterProxyModel()
         self.drossels_model.setSourceModel(self.drossels_in_model)
-        self.connectors_in_model = TableModel(headers['Разъемы'], self.connectors_data)
+        self.connectors_in_model = TableModel(headers['Разъемы'])
         self.connectors_model = QSortFilterProxyModel()
         self.connectors_model.setSourceModel(self.connectors_in_model)
-        self.other_in_model = TableModel(headers['Прочее'], self.other_data)
+        self.other_in_model = TableModel(headers['Прочее'])
         self.other_model = QSortFilterProxyModel()
         self.other_model.setSourceModel(self.other_in_model)
-        self.projects_in_model = TableModel(projects_headers, self.projects_data)
+        self.projects_in_model = TableModel(projects_headers)
         self.projects_model = QSortFilterProxyModel()
         self.projects_model.setSourceModel(self.projects_in_model)
-        self.cases_in_model = TableModel(cases_headers, self.cases_data)
+        self.cases_in_model = TableModel(cases_headers)
         self.cases_model = QSortFilterProxyModel()
         self.cases_model.setSourceModel(self.cases_in_model)
-        self.mount_in_model = TableModel(mount_headers, self.mount_data)
+        self.mount_in_model = TableModel(mount_headers)
         self.mount_model = QSortFilterProxyModel()
         self.mount_model.setSourceModel(self.mount_in_model)
-        self.statistic_in_model = TableModel(statistic_headers, self.statistic_data)
+        self.statistic_in_model = TableModel(statistic_headers)
         self.statistic_model = QSortFilterProxyModel()
         self.statistic_model.setSourceModel(self.statistic_in_model)
-        self.report_in_model = TableModel(report_headers, self.report_data)
+        self.report_in_model = TableModel(report_headers)
         self.report_model = QSortFilterProxyModel()
         self.report_model.setSourceModel(self.report_in_model)
 
@@ -258,12 +259,14 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.groups = (
             'Резисторы', 'Конденсаторы', 'Диоды', 'Транзисторы', 'Микросхемы', 'Дроссели', 'Разъемы', 'Прочее'
         )
-        self.data_groups = (
-            self.resistors_data, self.capacitors_data, self.diodes_data, self.transistors_data, self.microschemes_data,
-            self.drossels_data, self.connectors_data, self.other_data
-        )
+        # self.data_groups = (
+        #     self.resistors_in_model.items, self.capacitors_in_model.items, self.diodes_in_model.items,
+        #     self.transistors_in_model.items, self.microschemes_in_model.items, self.drossels_in_model.items,
+        #     self.connectors_in_model.items, self.other_in_model.items
+        # )
         self.base_data = (
-            self.projects_data, self.cases_data, self.mount_data, self.statistic_data, self.report_data
+            self.projects_in_model.items, self.cases_in_model.items, self.mount_in_model.items,
+            self.statistic_in_model.items, self.report_in_model.items
         )
         self.base_models = (
             self.projects_in_model, self.cases_in_model, self.mount_in_model, self.statistic_in_model,
@@ -564,12 +567,12 @@ class AppWindow(QMainWindow, Ui_MainWindow):
     def clear_base(self):
         self.comboBox.currentIndexChanged.disconnect(self.ref_list)
         self.comboBox.clear()
-        for data in self.data_groups:
-            data.clear()
-        for data in self.base_data:
-            data.clear()
+        for model in self.in_models:
+            model.items.clear()
+            model.reset()
         for model in self.base_models:
-            model.setItems([])
+            model.items.clear()
+            model.reset()
 
     def filling(self):
         with self.conn:
@@ -597,22 +600,24 @@ class AppWindow(QMainWindow, Ui_MainWindow):
                               'project_name varchar)'
                               )
             for i, group in enumerate(self.groups):
-                data = self.data_groups[i]
+                # data = self.data_groups[i]
                 in_model = self.in_models[i]
                 columns_list = self.filling_columns[i]
                 source_data = self.conn.execute(f"select {columns_list} from components where "
                                                 f"type = '{group}'").fetchall()
                 for row in source_data:
-                    data.append(row)
-                in_model.setItems(data)
+                    in_model.items.append(row)
+                in_model.reset()
+                # in_model.setItems(data)
 
     def projects_filling(self):
-        self.projects_data.clear()
+        self.projects_in_model.items.clear()
         with self.conn:
             data = self.conn.execute('select * from projects')
             for row in data:
-                self.projects_data.append(row)
-            self.projects_in_model.setItems(self.projects_data)
+                self.projects_in_model.items.append(row)
+            self.projects_in_model.reset()
+            # self.projects_in_model.setItems(self.projects_data)
 
     def cases_filling(self):
         group = self.cases.comboBox.currentText()
@@ -626,7 +631,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
     def components_filling(self):
         project = self.comboBox.currentText()
         if project != '':
-            self.mount_data.clear()
+            self.mount_in_model.items.clear()
             table_components = f'{project}_components'
             with self.conn:
                 data = self.conn.execute(
@@ -634,8 +639,9 @@ class AppWindow(QMainWindow, Ui_MainWindow):
                     f'join components on "{table_components}".element_id = components.id'
                 )
                 for row in data:
-                    self.mount_data.append(row)
-                self.mount_in_model.setItems(self.mount_data)
+                    self.mount_in_model.items.append(row)
+                    self.mount_in_model.reset()
+                # self.mount_in_model.setItems(self.mount_data)
 
     def add_component(self):
         self.clear_fields()
@@ -990,13 +996,14 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         group = self.groups[index]
         columns_list = self.filling_columns[index]
         model = self.in_models[index]
-        data = self.data_groups[index]
-        data.clear()
+        model.items.clear()
+        # data = self.data_groups[index]
+        # data.clear()
         with self.conn:
             source_data = self.conn.execute(f"select {columns_list} from components where type = '{group}'").fetchall()
             for row in source_data:
-                data.append(row)
-            model.setItems(data)
+                model.items.append(row)
+            model.reset()
 
     def change_element_action(self, btn):
         if btn.text() in ['Apply']:
@@ -1020,7 +1027,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         component_id = self.current_component_id
         if row != -1:
             id_index = model.index(row, 0)
-            element_id = model.data(id_index)
+            component_id = model.data(id_index)
         count = self.change_elements.mount_box.value()
         project_name = self.comboBox.currentText()
         table_components = f'{project_name}_components'
@@ -1085,7 +1092,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
     def statistic_table(self):
         elements_table = f'{self.comboBox.currentText()}_components'
         if elements_table != '_components':
-            self.statistic_data.clear()
+            self.statistic_in_model.items.clear()
             with self.conn:
                 data = self.cursor.execute(
                     f'select type, case_id, nominal, deviation, material from "{elements_table}" join components on '
@@ -1097,13 +1104,14 @@ class AppWindow(QMainWindow, Ui_MainWindow):
                     for column in row:
                         new_row.append(column)
                     new_row.append(data.count(row))
-                    self.statistic_data.append(new_row)
-                self.statistic_in_model.setItems(self.statistic_data)
+                    self.statistic_in_model.items.append(new_row)
+                    self.statistic_in_model.reset()
+                # self.statistic_in_model.setItems(self.statistic_data)
 
     def available_components(self):
         elements_table = f'{self.comboBox.currentText()}_components'
         if elements_table != '_components':
-            self.report_data.clear()
+            self.report_in_model.items.clear()
             k = self.spinBox_2.value()
             with self.conn:
                 data = self.cursor.execute(
@@ -1122,8 +1130,9 @@ class AppWindow(QMainWindow, Ui_MainWindow):
                     diff = quantity - req
                     res = 0 if diff > 0 else abs(diff)
                     new_row.append(res)
-                    self.report_data.append(new_row)
-                self.report_in_model.setItems(self.report_data)
+                    self.report_in_model.items.append(new_row)
+                    self.report_in_model.reset()
+                # self.report_in_model.setItems(self.report_data)
 
     def set_form_fields(self, disabled, enabled):
         for i in disabled:
@@ -1572,7 +1581,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/images/Logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         report_.setWindowIcon(icon)
-        report_.setText('Программа организации хранения и использования электронных компонентов "База деталей 2.1"')
+        report_.setText('Программа организации хранения и использования электронных компонентов "База деталей 3.0"')
         report_.setIcon(QMessageBox.Information)
         report_.setStandardButtons(QMessageBox.Ok)
         report_.exec_()
@@ -1620,17 +1629,16 @@ class Cases(QDialog, Ui_Cases):
 
 class TableModel(QAbstractTableModel):
 
-    def __init__(self, headers, data_in, parent=None):
+    def __init__(self, headers, parent=None):
 
         super().__init__(parent)
         self.headers = headers
-        self.data_in = data_in
-        self.insertRows(len(self.data_in), 1)
+        # self.data_in = data_in
         self.items = []
+        self.insertRows(len(self.items), 1)
 
-    def setItems(self, items):
+    def reset(self):
         self.beginResetModel()
-        self.items = items
         self.endResetModel()
 
     def headerData(self, section, orientation, role):
@@ -1645,7 +1653,7 @@ class TableModel(QAbstractTableModel):
         col = index.column()
 
         if role == Qt.DisplayRole:
-            value = self.data_in[row][col]
+            value = self.items[row][col]
             return value
 
     def columnCount(self, parent):
@@ -1654,7 +1662,7 @@ class TableModel(QAbstractTableModel):
 
     def rowCount(self, parent):
 
-        return len(self.data_in)
+        return len(self.items)
 
     def insertRows(self, position, rows, parent=QModelIndex()):
 
